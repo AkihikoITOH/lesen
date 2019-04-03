@@ -1,1 +1,1 @@
-# Lesen - A Feedly compatible CLI RSS reader
+# Lesen - A CLI RSS reader

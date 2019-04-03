@@ -3,6 +3,9 @@ package feedly
 import (
 	"sync"
 
+	"gopkg.in/cheggaaa/pb.v1"
+
+	"github.com/AkihikoITOH/lesen/model"
 	"github.com/AkihikoITOH/lesen/parser"
 )
 
@@ -28,28 +31,35 @@ func NewFeedsFromOPML(path string) (*Root, error) {
 func (r *Root) FetchSources() {
 	wg := &sync.WaitGroup{}
 	wg.Add(1)
+
+	sources := make([]model.Source, 0)
 	for _, dir := range r.Directories() {
-		for _, src := range dir.Sources() {
-			wg.Add(1)
-			go func(s *Source, g *sync.WaitGroup) {
-				s.Fetch()
-				g.Done()
-			}(src, wg)
-		}
+		sources = append(sources, dir.Sources()...)
 	}
+
+	progress := pb.StartNew(len(sources))
+	for _, src := range sources {
+		wg.Add(1)
+		go func(s model.Source, g *sync.WaitGroup, p *pb.ProgressBar) {
+			s.Fetch()
+			p.Increment()
+			g.Done()
+		}(src, wg, progress)
+	}
+
 	wg.Done()
 	wg.Wait()
 }
 
 type Root struct {
 	title       string
-	directories []*Directory
+	directories []model.Directory
 }
 
 func (r *Root) Title() string {
 	return r.title
 }
 
-func (r *Root) Directories() []*Directory {
+func (r *Root) Directories() []model.Directory {
 	return r.directories
 }

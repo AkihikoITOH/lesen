@@ -7,6 +7,7 @@ import (
 type Root interface {
 	Title() string
 	Directories() []Directory
+	FetchSources()
 }
 
 type Directory interface {
