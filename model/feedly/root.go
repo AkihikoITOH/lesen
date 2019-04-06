@@ -56,10 +56,23 @@ type Root struct {
 	directories []model.Directory
 }
 
+func (r *Root) Duplicate() model.Root {
+	dup := *r
+	return &dup
+}
+
 func (r *Root) Title() string {
 	return r.title
 }
 
+func (r *Root) SetTitle(title string) {
+	r.title = title
+}
+
 func (r *Root) Directories() []model.Directory {
 	return r.directories
+}
+
+func (r *Root) SetDirectories(directories []model.Directory) {
+	r.directories = directories
 }

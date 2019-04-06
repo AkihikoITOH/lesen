@@ -12,10 +12,10 @@ var (
 	}
 
 	directoryTitlesFlag = cli.StringSliceFlag{
-		Name:   "titles",
+		Name:   "directories",
 		Value:  &cli.StringSlice{},
-		Usage:  "Comma-separated list of titles to show.",
-		EnvVar: "LESEN_TITLES",
+		Usage:  "Comma-separated list of directories to show.",
+		EnvVar: "LESEN_DIRECTORIES",
 	}
 
 	feedModeFlag = cli.StringFlag{

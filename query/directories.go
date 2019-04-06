@@ -9,13 +9,9 @@ type CollectDirectoriesOpts struct {
 	Titles []string
 }
 
-func (q *Query) CollectDirectories(opts *CollectDirectoriesOpts) []model.Directory {
-	if opts == nil {
-		return []model.Directory{}
-	}
-
+func (q *Query) CollectDirectories(opts CollectDirectoriesOpts) *Query {
 	if len(opts.Titles) == 0 {
-		return q.Root.Directories()
+		return q
 	}
 
 	directories := make([]model.Directory, 0)
@@ -25,5 +21,8 @@ func (q *Query) CollectDirectories(opts *CollectDirectoriesOpts) []model.Directo
 		}
 	}
 
-	return directories
+	newRoot := q.Root.Duplicate()
+	newRoot.SetDirectories(directories)
+
+	return &Query{newRoot}
 }

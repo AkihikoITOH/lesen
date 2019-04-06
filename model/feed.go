@@ -6,8 +6,11 @@ import (
 
 type Root interface {
 	Title() string
+	SetTitle(string)
 	Directories() []Directory
+	SetDirectories([]Directory)
 	FetchSources()
+	Duplicate() Root
 }
 
 type Directory interface {
