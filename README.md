@@ -1,1 +1,1 @@
-# Lesen - A CLI RSS reader
+# [WIP] Lesen - A CLI RSS reader
