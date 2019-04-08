@@ -1,8 +1,10 @@
 package feedly
 
 import (
+	"github.com/AkihikoITOH/lesen/model"
 	"github.com/AkihikoITOH/lesen/parser"
 	"github.com/mmcdole/gofeed"
+	"github.com/thoas/go-funk"
 )
 
 type Source struct {
@@ -30,6 +32,17 @@ func (s *Source) Fetch() error {
 	return err
 }
 
-func (s *Source) Feed() *gofeed.Feed {
-	return s.feed
+func (s *Source) Articles() []model.Article {
+	if s.feed == nil {
+		return []model.Article{}
+	}
+
+	articles, _ := funk.Map(
+		s.feed.Items,
+		func(item *gofeed.Item) model.Article {
+			return &Article{feedItem: item}
+		},
+	).([]model.Article)
+
+	return articles
 }

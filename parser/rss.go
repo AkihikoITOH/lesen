@@ -1,18 +1,18 @@
 package parser
 
 import (
+	"github.com/AkihikoITOH/lesen/config"
 	"github.com/mmcdole/gofeed"
-	"github.com/sirupsen/logrus"
 )
 
 func LoadRSS(url string) (*gofeed.Feed, error) {
 	fp := gofeed.NewParser()
-	logrus.Infof("Fetching %s", url)
+	config.Logger().Infof("Fetching %s", url)
 	feed, err := fp.ParseURL(url)
 	if err != nil {
-		logrus.Warnf("Error while fetching %s (%s)", url, err.Error())
+		config.Logger().Warnf("Error while fetching %s (%s)", url, err.Error())
 		return nil, err
 	}
-	logrus.Infof("Successfully fetched %s", url)
+	config.Logger().Infof("Successfully fetched %s", url)
 	return feed, nil
 }

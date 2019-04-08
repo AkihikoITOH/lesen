@@ -9,6 +9,8 @@ github.com/gdamore/tcell
 github.com/gdamore/tcell/terminfo
 # github.com/gilliek/go-opml v1.0.0
 github.com/gilliek/go-opml/opml
+# github.com/google/btree v1.0.0
+github.com/google/btree
 # github.com/konsorten/go-windows-terminal-sequences v1.0.1
 github.com/konsorten/go-windows-terminal-sequences
 # github.com/lucasb-eyer/go-colorful v1.0.1
@@ -23,6 +25,8 @@ github.com/mmcdole/gofeed/internal/shared
 github.com/mmcdole/gofeed/rss
 # github.com/mmcdole/goxpp v0.0.0-20181012175147-0068e33feabf
 github.com/mmcdole/goxpp
+# github.com/peterbourgon/diskv v2.0.1+incompatible
+github.com/peterbourgon/diskv
 # github.com/rivo/tview v0.0.0-20190324182152-8a9e26fab0ff
 github.com/rivo/tview
 # github.com/rivo/uniseg v0.0.0-20190313204849-f699dde9c340

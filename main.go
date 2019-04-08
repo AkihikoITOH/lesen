@@ -1,22 +1,16 @@
 package main
 
 import (
-	"github.com/sirupsen/logrus"
-
 	"github.com/AkihikoITOH/lesen/cmd"
-)
-
-const (
-	DebugEnvVar     = "LESEN_DEBUG_MODE"
-	DefaultLesenDir = "/.lesen"
-	DefaultLogFile  = "/lesen.log"
+	"github.com/AkihikoITOH/lesen/config"
 )
 
 func main() {
-	initLogger()
+	initConfig()
+
 	err := cmd.StartNewCLIApp()
 
 	if err != nil {
-		logrus.Fatal(err.Error())
+		config.Logger().Fatal(err.Error())
 	}
 }

@@ -1,8 +1,6 @@
 package model
 
-import (
-	"github.com/mmcdole/gofeed"
-)
+import "time"
 
 type Root interface {
 	Title() string
@@ -23,5 +21,15 @@ type Source interface {
 	XMLURL() string
 	HTMLURL() string
 	Fetch() error
-	Feed() *gofeed.Feed
+	Articles() []Article
+}
+
+type Article interface {
+	Title() string
+	Description() string
+	Link() string
+	PublishedAt() *time.Time
+	MarkAsRead()
+	MarkedAsRead() bool
+	MarkAsUnread()
 }

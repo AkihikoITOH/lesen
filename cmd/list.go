@@ -106,16 +106,11 @@ func listArticlesAction(c *cli.Context) error {
 	for _, dir := range filtered.Directories() {
 		fmt.Printf("* %s\n", dir.Title())
 		for _, src := range dir.Sources() {
-			feed := src.Feed()
-			if feed == nil {
-				fmt.Println(" * Feed unavailable.")
-				continue
-			}
 			fmt.Printf(" * %s\n", src.Title())
-			for _, item := range feed.Items {
-				if len(item.Title) > 0 {
-					fmt.Printf("  * %s\n", item.Title)
-					fmt.Printf("    %s\n", item.Link)
+			for _, article := range src.Articles() {
+				if len(article.Title()) > 0 {
+					fmt.Printf("  * %s\n", article.Title())
+					fmt.Printf("    %s\n", article.Link())
 				}
 			}
 		}
