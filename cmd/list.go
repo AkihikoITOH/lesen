@@ -1,12 +1,11 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/urfave/cli"
 
 	"github.com/AkihikoITOH/lesen/model/feedly"
 	"github.com/AkihikoITOH/lesen/query"
+	"github.com/AkihikoITOH/lesen/ui"
 )
 
 var listCommand = cli.Command{
@@ -61,9 +60,8 @@ func listDirectoriesAction(c *cli.Context) error {
 		return err
 	}
 
-	for _, dir := range root.Directories() {
-		fmt.Printf("* %s\n", dir.Title())
-	}
+	cui := ui.NewCUI(root, ui.DirectoryLevel)
+	cui.Draw()
 
 	return nil
 }
@@ -80,12 +78,8 @@ func listSourcesAction(c *cli.Context) error {
 
 	filtered := q.Root
 
-	for _, dir := range filtered.Directories() {
-		fmt.Printf("* %s\n", dir.Title())
-		for _, src := range dir.Sources() {
-			fmt.Printf(" * %s\n", src.Title())
-		}
-	}
+	cui := ui.NewCUI(filtered, ui.SourceLevel)
+	cui.Draw()
 
 	return nil
 }
@@ -103,18 +97,8 @@ func listArticlesAction(c *cli.Context) error {
 	filtered := q.Root
 	filtered.FetchSources()
 
-	for _, dir := range filtered.Directories() {
-		fmt.Printf("* %s\n", dir.Title())
-		for _, src := range dir.Sources() {
-			fmt.Printf(" * %s\n", src.Title())
-			for _, article := range src.Articles() {
-				if len(article.Title()) > 0 {
-					fmt.Printf("  * %s\n", article.Title())
-					fmt.Printf("    %s\n", article.Link())
-				}
-			}
-		}
-	}
+	cui := ui.NewCUI(filtered, ui.ArticleLevel)
+	cui.Draw()
 
 	return nil
 }
