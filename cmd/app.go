@@ -15,6 +15,6 @@ func newCLIApp() *cli.App {
 	app := cli.NewApp()
 	app.Name = "lesen"
 	app.Usage = "Command line RSS Reader"
-	app.Commands = []cli.Command{listCommand}
+	app.Commands = []cli.Command{listCommand, tuiCommand}
 	return app
 }

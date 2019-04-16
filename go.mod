@@ -1,19 +1,17 @@
 module github.com/AkihikoITOH/lesen
 
 require (
-	github.com/DATA-DOG/go-sqlmock v1.3.3 // indirect
 	github.com/PuerkitoBio/goquery v1.5.0 // indirect
 	github.com/fatih/color v1.7.0 // indirect
-	github.com/gdamore/tcell v1.1.1 // indirect
 	github.com/gilliek/go-opml v1.0.0
+	github.com/gizak/termui/v3 v3.0.0
 	github.com/google/btree v1.0.0 // indirect
-	github.com/lucasb-eyer/go-colorful v1.0.1 // indirect
 	github.com/mattn/go-colorable v0.1.1 // indirect
+	github.com/mattn/go-runewidth v0.0.4 // indirect
+	github.com/mitchellh/go-wordwrap v1.0.0 // indirect
 	github.com/mmcdole/gofeed v1.0.0-beta2
 	github.com/mmcdole/goxpp v0.0.0-20181012175147-0068e33feabf // indirect
 	github.com/peterbourgon/diskv v2.0.1+incompatible
-	github.com/rivo/tview v0.0.0-20190324182152-8a9e26fab0ff
-	github.com/rivo/uniseg v0.0.0-20190313204849-f699dde9c340 // indirect
 	github.com/sirupsen/logrus v1.4.0
 	github.com/thoas/go-funk v0.0.0-20190328084834-b6996520715f
 	github.com/urfave/cli v1.19.1

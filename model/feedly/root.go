@@ -3,8 +3,6 @@ package feedly
 import (
 	"sync"
 
-	"gopkg.in/cheggaaa/pb.v1"
-
 	"github.com/AkihikoITOH/lesen/model"
 	"github.com/AkihikoITOH/lesen/parser"
 )
@@ -37,14 +35,12 @@ func (r *Root) FetchSources() {
 		sources = append(sources, dir.Sources()...)
 	}
 
-	progress := pb.StartNew(len(sources))
 	for _, src := range sources {
 		wg.Add(1)
-		go func(s model.Source, g *sync.WaitGroup, p *pb.ProgressBar) {
+		go func(s model.Source, g *sync.WaitGroup) {
 			s.Fetch()
-			p.Increment()
 			g.Done()
-		}(src, wg, progress)
+		}(src, wg)
 	}
 
 	wg.Done()
