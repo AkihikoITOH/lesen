@@ -20,10 +20,10 @@ func NewPane(sources []model.Source) *Pane {
 	list := widgets.NewList()
 	list.Title = "Sources"
 	list.Rows = srcs
-	list.SetRect(0, 8, 30, 8+2*len(srcs))
+	list.SetRect(0, 5, 30, 8+2*len(srcs))
 	list.Border = true
 	list.WrapText = false
-	list.SelectedRowStyle.Fg = termui.ColorRed
+	list.SelectedRowStyle.Fg = selectedTextColor
 
 	articleLists := make([]*ArticleList, 0, len(sources))
 	for _, src := range sources {
@@ -34,6 +34,12 @@ func NewPane(sources []model.Source) *Pane {
 }
 
 func (pane *Pane) Refresh() {
+	if currentFocus == sourceFocus {
+		pane.List.BorderStyle.Fg = focusedBorderColor
+	} else {
+		pane.List.BorderStyle.Fg = defaultColor
+	}
+	pane.ActiveArticleList().Refresh()
 	termui.Render(pane.ActiveArticleList())
 }
 

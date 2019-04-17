@@ -21,6 +21,7 @@ func NewTab(directories []model.Directory) *Tab {
 	tabpane.Title = "Categories"
 	tabpane.SetRect(0, 1, 50, 4)
 	tabpane.Border = true
+	tabpane.BorderStyle.Fg = focusedBorderColor
 
 	panes := make([]*Pane, 0, len(directories))
 	for _, dir := range directories {
@@ -31,6 +32,12 @@ func NewTab(directories []model.Directory) *Tab {
 }
 
 func (tab *Tab) Refresh() {
+	if currentFocus == categoryFocus {
+		tab.TabPane.BorderStyle.Fg = focusedBorderColor
+	} else {
+		tab.TabPane.BorderStyle.Fg = defaultColor
+	}
+	tab.ActivePane().Refresh()
 	termui.Render(tab.ActivePane())
 }
 
