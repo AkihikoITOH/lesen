@@ -14,6 +14,7 @@ require (
 	github.com/mmcdole/goxpp v0.0.0-20181012175147-0068e33feabf // indirect
 	github.com/peterbourgon/diskv v2.0.1+incompatible
 	github.com/pkg/browser v0.0.0-20180916011732-0a3d74bf9ce4
+	github.com/samertm/homebrew-go-resources v0.0.0-20160312223933-ac306363620b // indirect
 	github.com/sirupsen/logrus v1.4.0
 	github.com/thoas/go-funk v0.0.0-20190328084834-b6996520715f
 	github.com/urfave/cli v1.19.1
