@@ -7,6 +7,7 @@ import (
 
 type ArticleList struct {
 	*widgets.List
+	articles []model.Article
 }
 
 func NewArticleList(articles []model.Article) *ArticleList {
@@ -24,7 +25,7 @@ func NewArticleList(articles []model.Article) *ArticleList {
 	list.WrapText = false
 	list.SelectedRowStyle.Fg = selectedTextColor
 
-	return &ArticleList{List: list}
+	return &ArticleList{List: list, articles: articles}
 }
 
 func (al *ArticleList) Refresh() {
@@ -33,4 +34,8 @@ func (al *ArticleList) Refresh() {
 	} else {
 		al.List.BorderStyle.Fg = defaultColor
 	}
+}
+
+func (al *ArticleList) ActiveArticle() model.Article {
+	return al.articles[al.List.SelectedRow]
 }

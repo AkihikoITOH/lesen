@@ -31,6 +31,8 @@ github.com/mmcdole/goxpp
 github.com/nsf/termbox-go
 # github.com/peterbourgon/diskv v2.0.1+incompatible
 github.com/peterbourgon/diskv
+# github.com/pkg/browser v0.0.0-20180916011732-0a3d74bf9ce4
+github.com/pkg/browser
 # github.com/sirupsen/logrus v1.4.0
 github.com/sirupsen/logrus
 # github.com/thoas/go-funk v0.0.0-20190328084834-b6996520715f

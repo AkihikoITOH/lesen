@@ -6,6 +6,7 @@ import (
 	tm "github.com/buger/goterm"
 	termui "github.com/gizak/termui/v3"
 	"github.com/gizak/termui/v3/widgets"
+	"github.com/pkg/browser"
 	"github.com/thoas/go-funk"
 
 	"github.com/AkihikoITOH/lesen/model"
@@ -122,6 +123,12 @@ func (t *TUI) browseArticles(eventID string) {
 		t.window.ActivePane().ActiveArticleList().ScrollUp()
 	case "<Down>":
 		t.window.ActivePane().ActiveArticleList().ScrollDown()
+	case "<Enter>":
+		article := t.window.ActivePane().ActiveArticleList().ActiveArticle()
+		url := article.Link()
+		if len(url) > 0 {
+			browser.OpenURL(url)
+		}
 	}
 }
 
