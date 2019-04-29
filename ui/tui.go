@@ -40,7 +40,7 @@ func NewTUI(root model.Root) *TUI {
 
 func newInstruction() *widgets.Paragraph {
 	p := widgets.NewParagraph()
-	p.Text = "Press q to quit, Press h or l to switch between tabs."
+	p.Text = "Switch focus by pressing \"c\" (categories), \"s\" (sources) or \"a\" (articles) and browse items using arrow buttons. | Press \"q\" to exit."
 	p.SetRect(0, 0, len(p.Text)+5, 1)
 	p.Border = false
 	p.TextStyle.Bg = messageBackgroundColor
