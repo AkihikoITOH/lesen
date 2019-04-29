@@ -1,6 +1,9 @@
 package ui
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/AkihikoITOH/lesen/model"
 	termui "github.com/gizak/termui/v3"
 	"github.com/gizak/termui/v3/widgets"
@@ -17,11 +20,12 @@ func NewTab(directories []model.Directory) *Tab {
 		dirs = append(dirs, dir.Title())
 	}
 
+	width := len(fmt.Sprintf(" %s ", strings.Join(dirs, " | ")))
+
 	tabpane := widgets.NewTabPane(dirs...)
-	tabpane.Title = "Categories"
-	tabpane.SetRect(0, 1, 50, 4)
+	tabpane.SetRect(0, 1, width, 4)
 	tabpane.Border = true
-	tabpane.BorderStyle.Fg = focusedBorderColor
+	tabpane.BorderStyle.Fg = defaultColor
 
 	panes := make([]*Pane, 0, len(directories))
 	for _, dir := range directories {
@@ -32,11 +36,6 @@ func NewTab(directories []model.Directory) *Tab {
 }
 
 func (tab *Tab) Refresh() {
-	if currentFocus == categoryFocus {
-		tab.TabPane.BorderStyle.Fg = focusedBorderColor
-	} else {
-		tab.TabPane.BorderStyle.Fg = defaultColor
-	}
 	tab.ActivePane().Refresh()
 	termui.Render(tab.ActivePane())
 }

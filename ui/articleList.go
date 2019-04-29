@@ -18,7 +18,8 @@ func NewArticleList(articles []model.Article) *ArticleList {
 	list := widgets.NewList()
 	list.Title = "Articles"
 	list.Rows = arts
-	list.SetRect(32, 5, 180, 8+2*len(arts))
+	height := len(arts) + 2
+	list.SetRect(32, 6, 120, 6+height)
 	list.Border = true
 	list.WrapText = false
 	list.SelectedRowStyle.Fg = selectedTextColor

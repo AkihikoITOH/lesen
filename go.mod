@@ -2,6 +2,7 @@ module github.com/AkihikoITOH/lesen
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.0 // indirect
+	github.com/buger/goterm v0.0.0-20181115115552-c206103e1f37
 	github.com/fatih/color v1.7.0 // indirect
 	github.com/gilliek/go-opml v1.0.0
 	github.com/gizak/termui/v3 v3.0.0

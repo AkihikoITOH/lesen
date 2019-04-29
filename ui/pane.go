@@ -20,8 +20,10 @@ func NewPane(sources []model.Source) *Pane {
 	list := widgets.NewList()
 	list.Title = "Sources"
 	list.Rows = srcs
-	list.SetRect(0, 5, 30, 8+2*len(srcs))
+	height := len(srcs) + 2
+	list.SetRect(0, 6, 30, 6+height)
 	list.Border = true
+	list.BorderStyle.Fg = focusedBorderColor
 	list.WrapText = false
 	list.SelectedRowStyle.Fg = selectedTextColor
 
